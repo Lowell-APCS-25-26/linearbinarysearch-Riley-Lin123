@@ -9,7 +9,7 @@
 public int linearSearch(Item[] a, int catNum){
     for (int i = 0; i < a.length; i++){
         if (a[i].getCatNum() == catNum){
-            return getInventory();
+            return a[i].getInventory();
         }
     }
     return -1;
@@ -30,7 +30,7 @@ public int binarySearch(Item[] a, int catNum){
     int high = a.length-1;
     while(low <= high){
         int guess = (low+high)/2;
-        if (a[guess] == catNum){
+        if (a[guess].getCatNum() == catNum){
             return a[guess].getInventory();
         }else if (a[guess] > catNum){
             high = guess - 1;
@@ -45,11 +45,11 @@ public int recursiveBinarySearch(Item[] a, int catNum, int low, int high){
     int guess = (low + high)/2;
     if (low > high){
         return -1;
-    }else if (a[guess] == catNum){
+    }else if (a[guess].getCatNum() == catNum){
         return a[guess].getInventory();
-    }else if (a[guess] > key){
+    }else if (a[guess].getCatNum() > catNum){
         return recursiveBinarySearch(a, catNum, low, guess-1);
     }else{
-        return recursiveBinarySearch(a,key,guess+1,high);
+        return recursiveBinarySearch(a,catNum,guess+1,high);
     }
 }
