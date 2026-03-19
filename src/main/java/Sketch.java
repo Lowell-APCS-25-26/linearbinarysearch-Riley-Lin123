@@ -73,12 +73,7 @@ public class Sketch {
     }
     return -1;
   }
-
-
-
-public int recursiveBinarySearch(Item[] a, int catNum, int low, int high){
   
-}
   public void tester(){
     int[] tests = {0, 183, 184, 2370, 15320, 19967, 19968};
     System.out.println();
