@@ -25,46 +25,60 @@ public class Sketch {
   };                             
  public int linearSearch(int catNumToFind) {
     for (int i = 0; i < store.length; i++) {
-        if (store[i].getCatNum() == catNumToFind)
+        if (store[i].getCatNum() == catNumToFind){
             return store[i].getInventory();
+        }
     }
     return -1;
 }
 
 public int recursiveLinearSearch(int catNumToFind, int startIndex) {
-    if (startIndex >= store.length)
+    if (startIndex > store.length){
         return -1;
-    else if (store[startIndex].getCatNum() == catNumToFind)
+    }
+    else if (store[startIndex].getCatNum() == catNumToFind){
         return store[startIndex].getInventory();
-    else
+    }
+    else{
         return recursiveLinearSearch(catNumToFind, startIndex + 1);
+    }
 }
 
 public int binarySearch(int catNumToFind) {
     int low = 0;
     int high = store.length - 1;
+    int guess = -1;
     while (low <= high) {
-        int guess = (low + high) / 2;
-        if (store[guess].getCatNum() == catNumToFind)
+        guess = (low + high) / 2;
+        if (store[guess].getCatNum() == catNumToFind){
             return store[guess].getInventory();
-        else if (store[guess].getCatNum() > catNumToFind)
+        }
+        else if (store[guess].getCatNum() > catNumToFind){
             high = guess - 1;
-        else
+          
+        }
+        else{
             low = guess + 1;
+            
+        }
     }
     return -1;
 }
 
 public int recursiveBinarySearch(int catNumToFind, int nLow, int nHigh) {
-    if (nLow > nHigh)
+    if (nLow > nHigh){
         return -1;
+    }
     int guess = (nLow + nHigh) / 2;
-    if (store[guess].getCatNum() == catNumToFind)
+    if (store[guess].getCatNum() == catNumToFind){
         return store[guess].getInventory();
-    else if (store[guess].getCatNum() > catNumToFind)
+    }
+    else if (store[guess].getCatNum() > catNumToFind){
         return recursiveBinarySearch(catNumToFind, nLow, guess - 1);
-    else
+    }
+    else{
         return recursiveBinarySearch(catNumToFind, guess + 1, nHigh);
+    }
 }
   
   public void tester(){
